@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Поиск резюме</title>
+    </head>
+    <style>
+        button {display: block; padding: 2px; border-radius: 6px; margin-top: 5px;}
+        label {display: inline-block; width: 125px;}
+    </style>
+    <body>
+        <h1>Поиск резюме:</h1>
+        <form action="{{ url_for('search') }}" method="GET" target="_blank">
+            <input type="text" name="query" style="width: 250px;"/>
+            <input type="submit" value="Найти" style="border-radius: 6px;"/>
+            <div id="parameters_menu" style="display: none; margin-top: 8px;">
+                <label for="top_n">Размер выдачи:</label>
+                <input type="text" name="top_n" id="top_n" value="25" style="width: 50px"/>
+                <br>
+                <label for="algo">Алгоритм:</label>
+                <select name="algo" id="algo">
+                    <option value="w2v">w2v</option>
+                    <option value="bm25">BM25</option>
+                    <option value="d2v">d2v</option>
+                    <option value="blend">Blend</option>
+                </select>
+                <br>
+                <label for="lemmatize">Лемматизировать:</label>
+                <input type="checkbox" id="lemmatize" name="lemmatize"/>
+                <br>
+                <label for="split_by">Разбить запрос:</label>
+                <select name="split_by" id="split_by">
+                    <option value="None">Нет</option>
+                    <option value="sentences">По предложениям</option>
+                    <option value="words">По словам</option>
+                </select>
+            </div>
+        </form>
+        <button id="menu_button" onclick="activateElement('menu_button', 'parameters_menu');">Дополн. параметры</button>
+    <p style="font-size: 12px;"><a href="https://www.avito.ru/moskva/rezume">Источник</a> резюме.</p>
+    </body>
+    <script type="text/javascript" src="{{ url_for('static', filename='activateElement.js') }}"></script>
+</html>

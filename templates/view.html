@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Просмотр резюме</title>
+    </head>
+    <body>
+        {% for block in content.split('\n\n') %}
+            {% for line in block.split('\n')%}
+                <p style="display: inline">{{ line }}</p><br>
+            {% endfor %}
+            <br>
+        {% endfor %}
+    </body>
+</html>
